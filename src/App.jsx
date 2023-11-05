@@ -69,21 +69,22 @@ function App() {
     let stateImages = []
 
     const interval = setInterval(() => {
-      // const cardList = document.querySelectorAll(".card")
+      const cardList = document.querySelectorAll(".card")
+
       if (
         stateImages[stateImages.length - 1]?.id ===
         movies[movies.length - 1]?.id
       ) {
-        let newImages = [...stateImages.slice(1, 3), movies[0]]
+        let newImages = [...stateImages.slice(1, 4), movies[0]]
         stateImages = newImages
         setShowImages([...newImages])
       } else {
         if (stateImages.length == 0) {
-          stateImages = [...movies.slice(0, 3)]
-          setShowImages([...movies.slice(0, 3)])
+          stateImages = [...movies.slice(0, 4)]
+          setShowImages([...movies.slice(0, 4)])
         } else {
           const index = stateImages[stateImages.length - 1]?.id
-          let newImages = [...stateImages.slice(1, 3), movies[index]]
+          let newImages = [...stateImages.slice(1, 4), movies[index]]
           stateImages = newImages
           setShowImages([...newImages])
         }
@@ -92,13 +93,13 @@ function App() {
         setActiveMovie({ ...stateImages[0], showFullDesc: false })
       } else if (stateImages.length === 2) {
         setActiveMovie({ ...stateImages[1], showFullDesc: false })
-      } else if (stateImages.length === 3) {
+      } else if (stateImages.length === 4) {
         setActiveMovie({ ...stateImages[1], showFullDesc: false })
       }
-      // for (let i = 0; i < cardList.length; i++) {
-      //   cardList[i].style.transform = `translateX(-300px)`
-      //   cardList[i].style.transition = `transform 2s ease`
-      // }
+      for (let i = 0; i < cardList.length; i++) {
+        cardList[i].style.left = "-300px"
+        cardList[i].style.transition = `all 4s ease`
+      }
     }, 2000)
 
     return () => {
@@ -119,12 +120,12 @@ function App() {
               <img
                 key={index}
                 src={movie.image}
-                className={`card rounded-[10px] overflow-hidden ${
+                className={`card relative left-0 rounded-[10px] overflow-hidden ${
                   index === 0 || index === 2
-                    ? "h-[330px] w-[250px] relative z-30"
+                    ? "h-[330px] w-[250px]  z-30"
                     : "w-[350px] h-[450px] z-40"
-                } ${index === 0 ? "relative right-[-30px]" : ""} ${
-                  index === 2 ? "relative right-[30px]" : ""
+                } ${index === 0 ? " right-[-30px]" : ""} ${
+                  index === 2 ? " right-[30px]" : ""
                 }`}
               />
             )
