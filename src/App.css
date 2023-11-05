@@ -1,0 +1,11 @@
+/* #slider_container .card:nth-child(1),
+#slider_container .card:nth-child(3) {
+  @apply scale-75;
+}
+#slider_container .card:nth-child(2) {
+  @apply scale-125;
+} */
+
+#slider_container .card:nth-child(4) {
+  @apply hidden;
+}
